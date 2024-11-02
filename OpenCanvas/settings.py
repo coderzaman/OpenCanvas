@@ -41,7 +41,15 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'LoginApp',
     'BlogApp',
+    'crispy_forms',
+    'crispy_bootstrap5',
 ]
+
+
+# form handling package 
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+CRISPY_TEMPLATE_PACK = "bootstrap5"
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -129,7 +137,13 @@ STATICFILES_DIRS = [
 MEDIA_ROOT = MEDIA_DIR
 MEDIA_URL = '/media/'
 
+
+# LogIn URL if user not sign but want see sign required details
+LOGIN_URL = '/account/user_sign_in/'
+
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+

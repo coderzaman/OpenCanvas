@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block title_block %}Sing In{% endblock title_block %}
+{% block body_block %}
+    <div class="container">
+        <div class="row justify-content-center vh-100 align-content-center">
+            <div class="col-sm-4">
+                <form method="POST">
+                   {% csrf_token %}
+                    {{form | crispy}}
+                    <input type="submit" value="Sign In" class="btn btn-sm btn-success">
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock body_block %}
+

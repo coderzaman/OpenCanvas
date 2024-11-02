@@ -1,0 +1,9 @@
+.logo{
+    font-family: "Agbalumo", system-ui;
+}
+
+.join-us-btn{
+    background-color: red;
+    width: 80px;    
+    text-align: center;
+}
