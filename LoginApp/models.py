@@ -6,4 +6,4 @@ from phone_field import PhoneField
 
 class UserProfile(models.Model):
     user = models.OneToOneField(User, related_name='user_profile', on_delete=models.CASCADE)
-    profile_pic = PhoneField(blank=False, help_text='Contact Phone Number')
+    profile_pic = models.ImageField(upload_to='profile_pics')

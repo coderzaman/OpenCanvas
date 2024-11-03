@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title_block %}{{user.username}}{% endblock title_block %}
+
+{% block body_block %}
+    <div class="container">
+        <div class="row justify-content-center vh-100  shadow shadow-md rounded rounded-2 border-dark-subtle m-4">
+            <div class="col-sm-6 text-center vh-100 align-content-center shadow shadow-md">
+                {% if user.user_profile %}
+                    <img class="img-fluid mb-2" src="/media/{{user.user_profile.profile_pic}}" alt="" height="150" width="150" class="rounded-circle">
+                    <h5>{{user.username}}</h5>
+                    <a href="{% url "Login:update_profile_pic" %}" class="btn btn-sm btn-success">Update Profile Picture</a>
+                {% else %}
+                    <img class="img-fluid mb-2" src="/media/profile_pics/profile.png" alt="" height="150" width="150" class="rounded-circle">
+                    <h5>{{user.username}}</h5>
+                    <a href="{% url 'Login:add_profile_pic' %}" class="btn btn-sm btn-success">Upload Profile Picture</a>
+                {% endif %}
+            </div>
+            <div class="col-6 vh-100 align-content-center ps-5"> 
+                <p><b>Name: </b> {{user.first_name}}{{user.last_name}}</p>
+                <p><b>Email:</b> {{user.email}}</p>
+                <p><b>Join Date:</b> {{ user.date_joined }}</p>
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-12 text-center">
+                <a href="{% url 'Login:update_profile' %}" class="btn btn-success btn-sm text-center m-auto">Update Profile</a>
+            </div>
+        </div>
+    </div>
+{% endblock body_block %}

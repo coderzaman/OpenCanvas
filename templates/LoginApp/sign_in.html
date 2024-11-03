@@ -9,6 +9,8 @@
                    {% csrf_token %}
                     {{form | crispy}}
                     <input type="submit" value="Sign In" class="btn btn-sm btn-success">
+                    <br> <br>
+                    <p>Join the OpenCanvas. <a href="{% url "Login:signup" %}">Sign up</a></p>
                 </form>
             </div>
         </div>

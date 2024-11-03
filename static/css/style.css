@@ -7,3 +7,13 @@
     width: 80px;    
     text-align: center;
 }
+
+a {
+    text-decoration: none;
+    color: black;
+    font-weight: 700;
+}
+
+a:hover{
+    color: #198754;
+}

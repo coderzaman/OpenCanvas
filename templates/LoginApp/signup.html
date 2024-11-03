@@ -22,7 +22,7 @@
                     {% csrf_token %}
                 </form>
             <br>
-            <p>Already Have an Acccount? <a href="#">Login Here</a></p>
+            <p>Already Have an Acccount? <a href="{% url "Login:user_sign_in" %}"> Sign In Here</a></p>
             </div>
         </div>
     </div>
@@ -30,7 +30,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-12">
-                    <h4 class="alert alert-success">Account Created Successfully <a href="#">Login Here</a></h4>
+                    <h4 class="alert alert-success">Account Created Successfully <a href="{% url "Login:user_sign_in" %}">Sign In Here</a></h4>
                 </div>
             </div>
         </div>
