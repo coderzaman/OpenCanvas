@@ -12,14 +12,15 @@
         </div>
         <div class="row mt-4 align-items-center">
             <div class="col-sm-8 text-center align-middle">
-                <img class="img-fluid" height="600" width="600" src="{% static 'images/signup.png' %}" alt="">
+                <img class="img-fluid" height="600" width="600" src="/media/LoginApp/signup.png" alt="">
             </div>
             <div class="col-sm-4 ">
                 <h3><b>Create Account</b></h3>
                 <form method="POST">
+                    {% csrf_token %}
                     {{ form | crispy }}
                     <input type="submit" value="Create Account" class="btn btn-sm btn-success">
-                    {% csrf_token %}
+                    
                 </form>
             <br>
             <p>Already Have an Acccount? <a href="{% url "Login:user_sign_in" %}"> Sign In Here</a></p>
@@ -29,7 +30,7 @@
 {% else %}
         <div class="container">
             <div class="row">
-                <div class="col-12">
+                <div class="col-12 mt-4">
                     <h4 class="alert alert-success">Account Created Successfully <a href="{% url "Login:user_sign_in" %}">Sign In Here</a></h4>
                 </div>
             </div>

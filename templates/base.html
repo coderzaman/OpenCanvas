@@ -15,7 +15,7 @@
   </head>
   <body>
 
-      <nav class="navbar navbar-expand-lg bg-body-tertiary shadow shadow-sm">
+      <nav class="navbar navbar-expand-lg bg-body-tertiary shadow ">
         <div class="container">
           <a class="navbar-brand fs-4 fw-medium logo"  href="{% url "index" %}">OpenCanvas</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -24,14 +24,22 @@
           <div class="collapse navbar-collapse w-100" id="navbarNav">
             <ul class="navbar-nav ms-auto">
               {% if user.is_authenticated %}
-                <li class="nav-item">
-                  <a class="nav-link active" aria-current="page" href="{% url "Login:profile" %}">Profile</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link active" aria-current="page" href="#">Our Story</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="{% url "Login:sign_out" %}">Sign Out</a>
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    @{{user.username}}
+                  </a>
+                  <ul class="dropdown-menu">
+                    <li class="nav-item">
+                      <a class="nav-link active" aria-current="page" href="{% url "Blog:create_blog" %}">Write Blog</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link active" aria-current="page" href="{% url "Login:profile" %}">Profile</a>
+                    </li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="{% url "Login:sign_out" %}">Sign Out</a>
+                    </li>
+                  </ul>
                 </li>
               {% else %}
                 <li class="nav-item">
@@ -48,10 +56,11 @@
           </div>
         </div>
       </nav>
-
+      
     {% block body_block %}
 
     {% endblock %}
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
+    <!-- Bootstrap JavaScript Bundle with Popper (include before closing </body> tag) -->
   </body>
 </html>
