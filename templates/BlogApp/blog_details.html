@@ -1,3 +1,65 @@
 {% extends 'base.html' %}
+{% load crispy_forms_tags %}
 {% block title_block %}{% endblock title_block %}
-{% block body_block %}{% endblock body_block %}
+{% block body_block %}
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-12">
+                <h1><b>{{blog.blog_title}}</b></h1>
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-12">
+                <h5>Posted By {{blog.author}}</h5>
+                <p class="m-0"><i>Published On: {{blog.publish_date}}</i></p>
+                <p class="m-0"><i>Last Update: {{blog.update_date}}</i></p>
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-12">
+                <div class="col-12">
+                    <img src="/media/{{blog.blog_image}}" alt="" class="img-fluid">
+                </div>
+            </div>
+        </div>
+        <hr>
+
+        <div class="row">
+            <div class="col-12">
+                <div class="col-12">
+                    <p>{{blog.blog_content | linebreaks}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr><br>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-8">
+                <form method="POST">
+                    {% csrf_token %}
+                    {{comment_form | crispy}}
+                    <button type="submit" class="btn btn-success btn-sm">Comment</button>
+                </form>
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-sm-8 mb-3">
+                {% if blog.blog_comment.all %}
+                    <h5>Comments</h5>
+                    {% for comment in blog.blog_comment.all  %}
+                        <hr>
+                        <p class="m-0"><a href="#">@{{comment.user}}</a></p>
+                        <p class="m-0">{{comment.comment}}</p>
+                        <p class="m-0" style="font-size: 12px;">{{comment.comment_date}}</p>
+                     {% endfor %}
+                {% endif %}
+              
+            
+            </div>
+        </div>
+    </div>
+{% endblock body_block %}
