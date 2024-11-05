@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title_block %}{{profile.username}}{% endblock title_block %}
+
+{% block body_block %}
+    <div class="container">
+ 
+        <div class="row justify-content-center vh-100  shadow shadow-md rounded rounded-2 border-dark-subtle m-4">
+            <div class="col-sm-6 text-center vh-100 align-content-center shadow shadow-md">
+                    <img class="img-fluid mb-2" src="/media/profile_pics/profile.png" alt="" height="150" width="150" class="rounded-circle">
+                    <h5>{{profile.username}}</h5>
+            </div>
+            <div class="col-6 vh-100 align-content-center ps-5"> 
+                <p><b>Name: </b> {{profile.first_name}}{{profile.last_name}}</p>
+                <p><b>Email:</b> {{profile.email}}</p>
+                <p><b>Join Date:</b> {{ profile.date_joined }}</p>
+                <p><b>Last Login:</b> {{ profile.last_login }}</p>
+                <p><b>Numbers Of Blogs:</b> {{ profile.post_author.count }}</p>
+            </div>
+        </div>
+    </div>
+{% endblock body_block %}

@@ -109,3 +109,4 @@ def update_profile_pic(request):
             
 
     return render(request, 'LoginApp/add_profile_pic.html', context={'form':form})
+
